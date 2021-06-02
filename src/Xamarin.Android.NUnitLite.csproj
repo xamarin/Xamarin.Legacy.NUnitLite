@@ -1,0 +1,52 @@
+<Project Sdk="Xamarin.Legacy.Sdk" >
+  <Import Project="$(MSBuildThisFileDirectory)..\NUnitLite.props" />
+  <PropertyGroup>
+    <TargetFrameworks>monoandroid11.0;net6.0-android</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Xamarin.Android.NUnitLite</RootNamespace>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\product.snk</AssemblyOriginatorKeyFile>
+    <AndroidApplication>false</AndroidApplication>
+    <NoStdLib>true</NoStdLib>
+    <!-- Disable XML doc warnings:
+         CS1570: XML comment has badly formed XML - 'Whitespace is not allowed at this location.'
+         CS1572: XML comment has a param tag for 'Bar', but there is no parameter by that name
+         CS1591: Missing XML comment for publicly visible type or member 'Foo'
+    -->
+    <NoWarn>1570;1572;1591</NoWarn>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <DefineConstants>$(DefineConstants);NUNITLITE;CLR_4_0;NET_4_5;__MOBILE__;MONOTOUCH</DefineConstants>
+    <GenerateDocumentation>True</GenerateDocumentation>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src-ThirdParty\NUnitLite\**\*.cs" />
+  </ItemGroup>
+
+  <PropertyGroup>
+      <!--
+      nuget packaging
+      -->
+      <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+      <PackageId>Xamarin.Legacy.NUnitLite</PackageId>
+      <PackageVersion>$(_NUnitLiteNugetVersion)</PackageVersion>
+      <Title>Xamarin.Legacy.NUnitLite</Title>
+      <Summary>Legacy NUnitLite for Xamarin. (https://github.com/xamarin/NUnitLite)</Summary>
+      <Description>Legacy NUnitLite for Xamarin. (https://github.com/xamarin/NUnitLite)</Description>
+      <Authors>Microsoft</Authors>
+      <Owners>Microsoft, Xamarin</Owners>
+      <Copyright>© Microsoft Corporation. All rights reserved.</Copyright>
+      <PackageProjectUrl>https://github.com/xamarin/NUnitLite</PackageProjectUrl>
+      <PackageLicenseUrl>https://raw.githubusercontent.com/xamarin/NUnitLite/main/Documentation/License.txt</PackageLicenseUrl>
+      <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+      <PackageTags></PackageTags>
+      <PackageOutputPath>$(MSBuildThisFileDirectory)..\</PackageOutputPath>
+      <AllowedOutputExtensionsInPackageBuildOutputFolder>.pdb;$(AllowedOutputExtensionsInPackageBuildOutputFolder)</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+
+</Project>
