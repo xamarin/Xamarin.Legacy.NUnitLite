@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        <_NUnitLiteNugetVersion>0.0.1-alpha</_NUnitLiteNugetVersion>
+        <_NUnitLiteNugetVersion>1.0.0</_NUnitLiteNugetVersion>
     </PropertyGroup>
 </Project>
